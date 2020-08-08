@@ -1,5 +1,6 @@
 package apps.interview.facts.remote
 
+import apps.interview.facts.BuildConfig
 import apps.interview.facts.remote.ClientHelper.getUnsafeOkHttpClient
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
@@ -15,7 +16,7 @@ object APiClient {
         get() {
             if (retrofit == null){
                 retrofit = Retrofit.Builder()
-//                    .baseUrl(BuildConfig.BASE_URL)
+                    .baseUrl(BuildConfig.BASE_URL)
                     .client(getUnsafeOkHttpClient().build())
                     .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
                     .addConverterFactory(ScalarsConverterFactory.create())
